@@ -83,14 +83,11 @@ var Page = React.createClass({
         }.bind(this))
     },
 
-    componentDidUpdate: function(prevProps, prevState) {
-        fb.set({shacks: this.state.shacks})
-    },
-
     addRating: function(guid, rating, e) {
         e.preventDefault();
         var shacks = this.state.shacks;
         shacks[guid].ratings.push(rating+1);
+        fb.child(guid).set(shacks[guid]);
         this.setState({shacks: shacks});
     },
 
@@ -105,12 +102,14 @@ var Page = React.createClass({
     newShack: function(e) {
         e.preventDefault();
         var shacks = this.state.shacks;
-        shacks[guid()] = {
+        var id = guid()
+        shacks[id] = {
             url: this.refs.url.getDOMNode().value,
             title: this.refs.title.getDOMNode().value,
             description: this.refs.description.getDOMNode().value,
             ratings: [3]
         }
+        fb.child(id).set(shacks[id]);
         this.setState({shacks: shacks})
         e.target.reset()
     },
