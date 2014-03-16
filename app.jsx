@@ -29,7 +29,7 @@ var Shacks = React.createClass({
     render: function() {
         var shacks = _.map(this.props.shacks, function(shack, id) {
             var rating = Math.round(sum(shack.ratings)/shack.ratings.length);
-            return (<Shack addRating={this.props.addRating} description={shack.description} title={shack.title} url={shack.url} rating={rating} key={shack.id} guid={id} />)
+            return (<Shack addRating={this.props.addRating} description={shack.description} title={shack.title} url={shack.url} num_ratings={shack.ratings.length} rating={rating} key={shack.id} guid={id} />)
         }.bind(this))
         return (<div>{shacks}</div>);
       }
@@ -43,7 +43,7 @@ var Shack = React.createClass({
                 <h2>{this.props.title}</h2>
                 <img src={this.props.url} alt={this.props.title} />
                 <p>{this.props.description}</p>
-                <Rating rating={this.props.rating} />
+                <Rating num_ratings={this.props.num_ratings} rating={this.props.rating} />
                 <MyRating guid={this.props.guid} addRating={this.props.addRating} rating={this.props.rating} />
             </div>
         );
@@ -68,7 +68,7 @@ var Rating = React.createClass({
             return (<span className="rating" key={i}>&#9733;</span>);
         })
         return (
-            <div>{stars}</div>
+            <div>{stars} ({this.props.num_ratings})</div>
         );
       }
 });
