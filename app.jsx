@@ -126,13 +126,13 @@ var Page = React.createClass({
                 <form className="col-md-5" onSubmit={this.newShack}>
                     <div className="form-group">
                         <div className="form-group">
-                            <input ref="url" placeholder="http://urlfortheawesomesha.ck/shack.jpg" type="text" />
+                            <input className="form-control" ref="url" placeholder="http://urlfortheawesomesha.ck/shack.jpg" type="text" />
                         </div>
                         <div className="form-group">
-                            <input ref="title" placeholder="Title for the Awesome Shack" type="text" />
+                            <input className="form-control" ref="title" placeholder="Title for the Awesome Shack" type="text" />
                         </div>
                         <div className="form-group">
-                            <textarea  ref="description" className="form-control" rows="4" placeholder="Description of the Awesome Shack"></textarea>
+                            <textarea ref="description" className="form-control" rows="4" placeholder="Description of the Awesome Shack"></textarea>
                         </div>
                         <div className="form-group">
                             <input className="btn btn-primary pull-right" type="submit" value="Submit Awesome Shack"  />
