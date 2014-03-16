@@ -87,7 +87,7 @@ var Page = React.createClass({
         e.preventDefault();
         var shacks = this.state.shacks;
         shacks[guid].ratings.push(rating+1);
-        fb.child(guid).set(shacks[guid]);
+        fb.child("shacks").child(guid).set(shacks[guid]);
         this.setState({shacks: shacks});
     },
 
@@ -109,7 +109,7 @@ var Page = React.createClass({
             description: this.refs.description.getDOMNode().value,
             ratings: [3]
         }
-        fb.child(id).set(shacks[id]);
+        fb.child("shacks").child(id).set(shacks[id]);
         this.setState({shacks: shacks})
         e.target.reset()
     },
