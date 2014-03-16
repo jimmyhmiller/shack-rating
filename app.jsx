@@ -124,6 +124,7 @@ var Page = React.createClass({
                     <Shacks addRating={this.addRating} shacks={this.state.shacks} />
                 </div>
                 <form className="col-md-5" onSubmit={this.newShack}>
+                    <h3>Add an Awesome Shack!</h3>
                     <div className="form-group">
                         <div className="form-group">
                             <input className="form-control" ref="url" placeholder="http://urlfortheawesomesha.ck/shack.jpg" type="text" />
