@@ -11,10 +11,6 @@ function guid() {
          s4() + '-' + s4() + s4() + s4();
 }
 
-// var simperium = new Simperium("buzzer-distortion-080", { token : "2edfec6cd3a04759804773c6672b9abf"});
-
-// var bucket = simperium.bucket("shacks");
-
 
 var fb = new Firebase("https://shack-rating.firebaseio.com/")
 
@@ -28,6 +24,7 @@ var sum = function(array) {
 var Shacks = React.createClass({
     render: function() {
         var shacks = _.map(this.props.shacks, function(shack, id) {
+            console.log(shack.title, sum(shack.ratings)/shack.ratings.length)
             var rating = Math.round(sum(shack.ratings)/shack.ratings.length);
             return (<Shack addRating={this.props.addRating} description={shack.description} title={shack.title} url={shack.url} num_ratings={shack.ratings.length} rating={rating} key={shack.id} guid={id} />)
         }.bind(this))
